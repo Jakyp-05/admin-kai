@@ -1,14 +1,18 @@
 import { Outlet } from "react-router-dom";
-import { Container } from "shared/ui/Container/Container.styles";
 import Header from "widgets/header/ui/Header";
+import Container from "shared/ui/container/Container";
+import Sidebar from "shared/ui/sidebar/Sidebar";
 
 export const Layout = () => {
   return (
-    <Container>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-    </Container>
+    <div style={{backgroundColor: "#f5f5f5"}}>
+      <Container>
+        <Sidebar />
+        <div style={{ flexGrow: 1 }}>
+          <Header />
+          <Outlet />
+        </div>
+      </Container>
+    </div>
   );
 };
