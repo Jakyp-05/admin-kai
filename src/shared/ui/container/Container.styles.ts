@@ -6,5 +6,4 @@ export const Container = styled("div")(({ theme }) => ({
   margin: "0 auto",
   display: "flex",
   flexDirection: "row",
-  border: "1px solid black",
 }));
