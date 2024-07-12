@@ -6,7 +6,7 @@ export const Header = styled("div")(({ theme }) => ({
     justifyContent:'space-between',
     background:'#FFFFFF',
     height:'87px',
-    padding:'0 10px ',
+    padding:'0 20px ',
     
 
     p:{
