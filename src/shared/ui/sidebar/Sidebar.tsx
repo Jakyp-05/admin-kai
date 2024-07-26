@@ -16,13 +16,13 @@ const Sidebar: React.FC = () => {
     <StyledSidebar>
       <nav className="nav">
         <div className="logo">
-          <Link to="/student">
+          <Link to="/">
             <img src={logo} alt="logo image" />
           </Link>
         </div>
         <ul>
-          <li className={active === "/student" ? "active" : ""}>
-            <Link to="student">Студенты</Link>
+          <li className={active === "/" ? "active" : ""}>
+            <Link to="/">Студенты</Link>
           </li>
           <li className={active === "/direction" ? "active" : ""}>
             <Link to="direction">Напрвление</Link>

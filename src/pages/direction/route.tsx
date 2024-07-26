@@ -6,7 +6,7 @@ const directionRoute = {
   element: <Outlet />,
   children: [
     {
-      path: "",
+      path: "/direction",
       element: <DirectionList />,
     },
   ],
