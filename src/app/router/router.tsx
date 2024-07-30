@@ -1,6 +1,7 @@
 import { Layout } from "app/layout/layout";
 import { useRoutes } from "react-router-dom";
 import { Fallback } from "shared/ui/fallback/Fallback";
+import Login from "features/auth/login/ui/Login";
 
 // Lists
 import DirectionRoute from "features/direaction/route";
@@ -24,6 +25,10 @@ export const MyRoutes = () => {
         ServiceRoute,
         SettingRoute,
       ],
+    },
+    {
+      path: "login",
+      element: <Login />,
     },
   ]);
   return myRouter;
