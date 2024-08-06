@@ -82,6 +82,9 @@ export const LoginButton = styled("button")({
   lineHeight: "25px",
   letterSpacing: "1px",
   transition: "drop-shadow 0.3s ease-in-out",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 
   ":hover": {
     filter: "drop-shadow(3px 5px 30px #80DEFF)",

@@ -1,22 +1,7 @@
 import "./style.css";
 
 const LoadingButton = () => {
-  return (
-    <div className="lds-spinner">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
+  return <div className="loader"></div>;
 };
 
 export default LoadingButton;
