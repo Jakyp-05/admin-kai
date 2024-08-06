@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { IconButton, TextField } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "app/store";
 import {
   LoginContainer,
   FormStyled,
@@ -15,18 +17,34 @@ import LoginCheck from "shared/ui/checkbox";
 
 // hook
 import useValidation from "../hook/useValidation";
+import { login } from "../store/actions";
+import LoadingButton from "shared/ui/loadingButton";
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { formik, handleRememberMe, rememberMe } = useValidation();
+  const { loading, error } = useAppSelector((state) => ({
+    loading: (state.login.login.status === "loading"),
+    error: state.login.login.message,
+  }));
 
   const handleClickShow = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const { email, password } = formik.values;
+
+    await dispatch(login({ user: { email, password }, navigate }));
+  };
+
   return (
     <LoginContainer>
-      <FormStyled onSubmit={formik.handleSubmit}>
+      <FormStyled onSubmit={handleSubmit}>
         <h2>Войти</h2>
         <MyInput>
           <p>Email*</p>
@@ -95,7 +113,9 @@ const Login: React.FC = () => {
           </CheckBoxLogin>
           <p>Забыли пароль ?</p>
         </MyCheckbox>
-        <LoginButton type="submit">Войти</LoginButton>
+        <LoginButton type="submit">
+          {loading ? <LoadingButton /> : "Войти"}
+        </LoginButton>
       </FormStyled>
     </LoginContainer>
   );

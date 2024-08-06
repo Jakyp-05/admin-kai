@@ -10,6 +10,7 @@ import LevelRoute from "features/level/route";
 import ProjectRoute from "features/project/route";
 import ServiceRoute from "features/service/route";
 import SettingRoute from "features/setting/route";
+import PretectedRoute from "shared/ui/PretectedRoute";
 
 export const MyRoutes = () => {
   const myRouter = useRoutes([
@@ -18,12 +19,17 @@ export const MyRoutes = () => {
       element: <Layout />,
       errorElement: <Fallback />,
       children: [
-        DirectionRoute,
-        InternsRoute,
-        LevelRoute,
-        ProjectRoute,
-        ServiceRoute,
-        SettingRoute,
+        {
+          element: <PretectedRoute />,
+          children: [
+            DirectionRoute,
+            InternsRoute,
+            LevelRoute,
+            ProjectRoute,
+            ServiceRoute,
+            SettingRoute,
+          ],
+        },
       ],
     },
     {

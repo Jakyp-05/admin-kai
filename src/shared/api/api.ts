@@ -1,10 +1,16 @@
 import axios from "axios";
 
-const apiRoot = axios.create({
-  baseURL: "",
+export const apiRoot = axios.create({
+  baseURL: "http://ec2-3-123-153-116.eu-central-1.compute.amazonaws.com/api/",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-export default apiRoot;
+export const addAuthHeader = (token: string) => {
+  return {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+};

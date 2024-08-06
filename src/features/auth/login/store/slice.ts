@@ -1,48 +1,52 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AuthState } from "../type";
+// import { AuthState } from "../type";
 import { login } from "./actions";
+import { LoginRes } from "../type";
 
-const initialState: AuthState = {
-  isAuthenticated: false,
-  user: null,
-  token: null,
-  loading: false,
-  error: null,
+interface Login {
+  status: "idle" | "loading" | "succeeded" | "failed";
+  token: string;
+  message?: string;
+}
+
+interface IInitialState {
+  login: Login;
+}
+
+const initialState: IInitialState = {
+  login: {
+    status: "idle",
+    token: localStorage.getItem("token") || "",
+    message: "",
+  },
 };
 
 const loginSlice = createSlice({
-  name: "login",
+  name: "auth",
   initialState,
   reducers: {
     logout: (state) => {
-      state.isAuthenticated = false;
-      state.error = null;
-      state.token = null;
       localStorage.removeItem("token");
-    },
-    setToken: (state, action) => {
-      state.token = action.payload;
-      state.isAuthenticated = true;
+      state.login.token = "";
+      state.login.status = "idle";
+      state.login.message = undefined;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
-        state.isAuthenticated = false;
-        state.error = null;
+        state.login.status = "loading";
       })
-      .addCase(login.fulfilled, (state, action) => {
-        state.isAuthenticated = true;
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.loading = false;
+      .addCase(login.fulfilled, (state, action: PayloadAction<LoginRes>) => {
+        state.login.status = "succeeded";
+        state.login.token = action.payload.token;
       })
       .addCase(login.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
+        state.login.status = "failed";
+        state.login.message = action.payload as string;
       });
   },
 });
 
-export const { logout, setToken } = loginSlice.actions;
+export const { logout } = loginSlice.actions;
 export default loginSlice.reducer;
