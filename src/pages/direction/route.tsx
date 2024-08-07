@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import DirectionList from "./ui/DirectionList";
+import DirectionList from "../../features/direaction/ui/Direction";
 
 const directionRoute = {
   path: "direction",

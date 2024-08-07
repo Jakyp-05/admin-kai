@@ -5,12 +5,13 @@ import Sidebar from "shared/ui/sidebar/Sidebar";
 
 export const Layout = () => {
   return (
-    <div style={{ backgroundColor: "#f5f5f5" }}>
+    <div style={{ backgroundColor: "#E5F4F5" }}>
       <Container>
         <Sidebar />
         <div style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
           <Header />
-          <main style={{ flexGrow: 1, padding: "30px 0" }}>
+          {/* <main style={{ flexGrow: 1, padding: "30px 0" }}> */}
+          <main style={{ flexGrow: 1, padding: "20px 0", height: "90vh" }}>
             <Outlet />
           </main>
         </div>
