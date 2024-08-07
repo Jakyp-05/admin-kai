@@ -1,17 +1,13 @@
 
 import React from 'react';
-import { StudentContent } from "pages/students/style/style";
-import { StudentAdd } from "pages/students/style/style";
-import { ButtonAdd } from "pages/students/style/style";
-import { StudentComponent } from "pages/students/style/style";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, styled } from '@mui/material';
 import logoAdmin from "../../../shared/assets/svg/logoAdmin.svg";
 import EditIcon from "../../../shared/assets/svg/changeIconPen.svg";
 import DeleteIcon from "../../../shared/assets/svg/IconDeletePink.svg";
 import vectorOption from "../../../shared/assets/svg/vectorOption.svg";
-import { Image } from "pages/students/style/style";
 import { Link } from 'react-router-dom';
 import AddInternModal from 'shared/ui/Inters/ui/InputAndSelect/modalInters/modalInters';
+import { ButtonAdd, StudentAdd, StudentComponent, StudentContent } from '../style/style';
 
 interface StatusCellProps {
   status: string;
@@ -61,6 +57,13 @@ const OverflowCell = styled(TableCell)({
 });
 
 const TableAll = styled(Table)(({ theme }) => ({}));
+const Image = styled("img")(({ theme }) => ({
+  width: '36px',
+  height: '36px',
+  borderRadius: '50%',
+  objectFit: 'cover',
+  // cursor: 'pointer',
+}));
 
 const StatusCell = styled(TableCell)<StatusCellProps>(({ status }) => ({
   color: status === 'Adaptation' ? 'orange' : 
