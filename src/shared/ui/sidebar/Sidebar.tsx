@@ -30,7 +30,7 @@ const Sidebar: React.FC = () => {
   }, [location.pathname]);
 
   const navItems = [
-    { path: "/interns", label: "Стажёры", Icon: internsSvg },
+    { path: "/", label: "Стажёры", Icon: internsSvg },
     { path: "/direction", label: "Напрвление", Icon: directionSvg },
     { path: "/project", label: "Проекты", Icon: projectSvg },
     { path: "/service", label: "Услуги", Icon: serviceSvg },
@@ -41,7 +41,7 @@ const Sidebar: React.FC = () => {
   return (
     <StyledSidebar>
       <nav className="nav">
-        <div className="logo">
+        {/* <div className="logo">
           <Link to="/">
             <img src={logo} alt="logo image" />
           </Link>
@@ -59,10 +59,10 @@ const Sidebar: React.FC = () => {
           <li className={active === "/report" ? "active" : ""}>
             <Link to="report">Отчеты</Link>
           </li>
-        </ul>
+        </ul> */}
         <SidebarFirst>
           <div className="logo">
-            <Link to="/student">
+            <Link to="/">
               <img src={logo} alt="logo image" />
             </Link>
           </div>
