@@ -23,7 +23,9 @@ export const MyRoutes = () => {
          directionRoute,
           // reportRoute,
            studentRouter,
-           routeDetails],
+           routeDetails,
+           ServiceRoute,
+          ],
            
     },
     {
