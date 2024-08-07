@@ -5,6 +5,7 @@ import reportRoute from "pages/report/route";
 import studentRouter from "pages/students/route";
 import { useRoutes } from "react-router-dom";
 import { Fallback } from "shared/ui/fallback/Fallback";
+import routeDetails from "../../shared/ui/Inters/ui/DetailsInter/routeDetails";
 
 export const MyRoutes = () => {
   const myRouter = useRoutes([
@@ -12,7 +13,7 @@ export const MyRoutes = () => {
       path: "/",
       element: <Layout />,
       errorElement: <Fallback />,
-      children: [activityRoute, directionRoute, reportRoute, studentRouter],
+      children: [activityRoute, directionRoute, reportRoute, studentRouter,routeDetails],
     },
   ]);
   return myRouter;
