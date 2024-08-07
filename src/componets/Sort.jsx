@@ -11,6 +11,7 @@ export const sortList = [
 ]
 
 const ButtonVector = styled('button')({
+    display: "flex",            
     display: "flex",
     alignItems: "center",
     justifyContent: 'center',

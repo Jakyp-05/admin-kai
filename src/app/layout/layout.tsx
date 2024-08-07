@@ -10,6 +10,7 @@ export const Layout = () => {
         <Sidebar />
         <div style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
           <Header />
+          {/* <main style={{ flexGrow: 1, padding: "30px 0" }}> */}
           <main style={{ flexGrow: 1, padding: "20px 0", height: "90vh" }}>
             <Outlet />
           </main>

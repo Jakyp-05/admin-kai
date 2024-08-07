@@ -41,6 +41,25 @@ const Sidebar: React.FC = () => {
   return (
     <StyledSidebar>
       <nav className="nav">
+        <div className="logo">
+          <Link to="/">
+            <img src={logo} alt="logo image" />
+          </Link>
+        </div>
+        <ul>
+          <li className={active === "/" ? "active" : ""}>
+            <Link to="/">Студенты</Link>
+          </li>
+          <li className={active === "/direction" ? "active" : ""}>
+            <Link to="direction">Напрвление</Link>
+          </li>
+          <li className={active === "/activity" ? "active" : ""}>
+            <Link to="activity">Activity</Link>
+          </li>
+          <li className={active === "/report" ? "active" : ""}>
+            <Link to="report">Отчеты</Link>
+          </li>
+        </ul>
         <SidebarFirst>
           <div className="logo">
             <Link to="/student">
