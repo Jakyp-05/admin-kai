@@ -17,11 +17,13 @@ import serviceSvg from "../../assets/svg/service.svg";
 import levelSvg from "../../assets/svg/level.svg";
 import settingSvg from "../../assets/svg/setting.svg";
 
-import "./Sidebar.css"
+import "./Sidebar.css";
+import useLogout from "shared/hooks/useLogout";
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const [active, setActive] = useState<string>(location.pathname);
+  const handlelogout = useLogout();
 
   useEffect(() => {
     setActive(location.pathname);
@@ -63,7 +65,7 @@ const Sidebar: React.FC = () => {
           </ul>
         </SidebarFirst>
         <SidebarLast>
-          <Logout>
+          <Logout onClick={handlelogout}>
             <img src={logoutSvg} alt="logout svg" />
             <p>Выход</p>
           </Logout>
