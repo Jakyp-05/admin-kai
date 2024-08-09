@@ -29,7 +29,7 @@ export const ContentPopup = styled("div")({
     },
 });
 
-export const ServicePost = styled("div")({
+export const ServicePost = styled("form")({
     padding: "30px 35px 45px 35px",
 });
 

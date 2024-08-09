@@ -1,18 +1,21 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+// src/app/store.ts
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-// Slice
-import loginSlice from "features/auth/login/store/slice";
+// Импортируем редьюсеры
+import loginSlice from 'features/auth/login/store/slice';
+import serviceSlice from 'features/service/store/slice'; // Импортируем новый редьюсер
 
 const rootReducer = combineReducers({
   login: loginSlice,
+  service: serviceSlice, // Добавляем новый редьюсер
 });
 
 export const store = configureStore({
   reducer: rootReducer,
 });
 
-// types
+// Типы
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 

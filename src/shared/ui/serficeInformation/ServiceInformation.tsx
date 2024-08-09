@@ -8,17 +8,11 @@ import {
 } from "./style";
 import backSvg from "../../assets/svg/arrowLeft.svg";
 import {useOutSideClick} from "shared/hooks/useOutSideClick";
-
-interface Data {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-}
+import { ServiceRes } from "features/service/type";
 
 type Props = {
     closePopup: () => void;
-    data: Data;
+    data: ServiceRes;
 };
 
 const CreateService: React.FC<Props> = ({closePopup, data}) => {
@@ -33,7 +27,7 @@ const CreateService: React.FC<Props> = ({closePopup, data}) => {
                     <h2>Информация о направлении</h2>
                 </PopupHeader>
                 <ServiceInformation>
-                    <h3>{data.name}</h3>
+                    <h3>{data.title}</h3>
                     <div>
                         <h4>Цена:</h4>
                         <span>{data.price}</span>
