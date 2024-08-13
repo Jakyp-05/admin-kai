@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import {
     ContainerPopup,
     ContentPopup,
@@ -7,39 +7,54 @@ import {
     ServiceInformationDescription
 } from "./style";
 import backSvg from "../../assets/svg/arrowLeft.svg";
-import {useOutSideClick} from "shared/hooks/useOutSideClick";
-import { ServiceRes } from "features/service/type";
+import { useOutSideClick } from "shared/hooks/useOutSideClick";
+import { RootState } from 'app/store';
+import { getService } from 'features/service/store/actions';
+import { resetSelectedService } from 'features/service/store/slice';
+import { useAppDispatch, useAppSelector } from 'app/store';
 
 type Props = {
     closePopup: () => void;
-    data: ServiceRes;
+    id: number;
 };
 
-const CreateService: React.FC<Props> = ({closePopup, data}) => {
-    const {ref} = useOutSideClick(closePopup);
+const ServiceInfo: React.FC<Props> = ({ closePopup, id }) => {
+    const { ref } = useOutSideClick(closePopup);
+    const dispatch = useAppDispatch();
+    const service = useAppSelector((state: RootState) => state.service.selectedService);
+
+    useEffect(() => {
+        if (id) {
+            dispatch(getService({ id }));
+        }
+    }, [dispatch, id]);
+    console.log(service)
     return (
         <ContainerPopup>
             <ContentPopup className="overlay" ref={ref}>
                 <PopupHeader>
-                    <button onClick={closePopup}>
-                        <img src={backSvg} alt="close svg"/>
+                    <button onClick={() => {
+                        closePopup()
+                        dispatch(resetSelectedService())
+                    }}>
+                        <img src={backSvg} alt="close svg" />
                     </button>
                     <h2>Информация о направлении</h2>
                 </PopupHeader>
-                <ServiceInformation>
-                    <h3>{data.title}</h3>
+                {service && <ServiceInformation>
+                    <h3>{service.title}</h3>
                     <div>
                         <h4>Цена:</h4>
-                        <span>{data.price}</span>
+                        <span>{service.price}</span>
                     </div>
                     <ServiceInformationDescription>
                         <h6>Описание</h6>
-                        <p>{data.description}</p>
+                        <p>{service.description}</p>
                     </ServiceInformationDescription>
-                </ServiceInformation>
+                </ServiceInformation>}
             </ContentPopup>
         </ContainerPopup>
     );
 };
 
-export default CreateService;
+export default ServiceInfo;

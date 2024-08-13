@@ -15,7 +15,5 @@ export interface ApiError {
     [key: string]: any;
 }
 
-// export type GetAllServicesRes = ServiceRes[];
-
 
 

@@ -9,18 +9,21 @@ import CreateService from "shared/ui/createService/CreateService";
 import deleteSvg from "shared/assets/svg/delete.svg";
 import editSvg from "shared/assets/svg/edit.svg";
 import ServiceInformation from "shared/ui/serficeInformation/ServiceInformation";
-import { ServiceRes } from '../type';
+import EditService from "shared/ui/editService/EditService"
+import { deleteService } from '../store/actions';
+
 
 const Service: React.FC = () => {
     const [popup, setPopup] = useState<boolean>(false);
     const [informationPopup, setInformationPopup] = useState<boolean>(false)
-    const [serviceInfo, setServiceInfo] = useState<ServiceRes | null>(null);
+    const [editPopup, setEditPopup] = useState<boolean>(false)
+    const [serviceId, setServiceId] = useState<number | null>(null);
     const dispatch = useDispatch<AppDispatch>();
     const services = useSelector(selectService);
 
     useEffect(() => {
         dispatch(getAllServices());
-    }, [dispatch]);
+    }, [services]);
 
     const handlePopup = () => {
         setPopup(true);
@@ -30,8 +33,16 @@ const Service: React.FC = () => {
         setInformationPopup(true)
     }
 
-    const handleInformation = (data: ServiceRes) => {
-        setServiceInfo(data)
+    const handleInformation = (id: number) => {
+        setServiceId(id)
+    }
+
+    const handleDelete = (id: number) => {
+        dispatch(deleteService({ id }));
+    };
+
+    const handleEdit = (id: number) => {
+        setServiceId(id)
     }
 
     return (
@@ -42,10 +53,17 @@ const Service: React.FC = () => {
                 {popup && <CreateService closePopup={() => setPopup(false)} />}
             </ServiceHead>
             <ServiceBody>
-                {informationPopup && serviceInfo && (
+                {informationPopup && serviceId && (
                     <ServiceInformation
                         closePopup={() => setInformationPopup(false)}
-                        data={serviceInfo}
+                        id={serviceId}
+                    />
+                )}
+
+                {editPopup && serviceId && (
+                    <EditService
+                        closePopup={() => setEditPopup(false)}
+                        id={serviceId}
                     />
                 )}
                 <table>
@@ -60,23 +78,32 @@ const Service: React.FC = () => {
                     <tbody>
                         {services && services.map(el => {
                             return (
-                                <tr onClick={() => {
-                                    handleInformationPopup()
-                                    handleInformation(el)
-                                }}>
-                                    <td>{el.title}</td>
-                                    <td>
+                                <tr key={el.id}>
+                                    <td onClick={() => {
+                                        handleInformationPopup()
+                                        handleInformation(el.id)
+                                    }}>{el.title}</td>
+                                    <td onClick={() => {
+                                        handleInformationPopup()
+                                        handleInformation(el.id)
+                                    }}>
                                         <p>
                                             {el.description}
                                         </p>
                                     </td>
-                                    <td>{`${el.price} сом`}</td>
+                                    <td onClick={() => {
+                                        handleInformationPopup()
+                                        handleInformation(el.id)
+                                    }}>{`${el.price} сом`}</td>
                                     <td>
-                                        <Icons>
-                                            <span>
+                                        <Icons >
+                                            <span onClick={() => handleDelete(el.id)}>
                                                 <img src={deleteSvg} alt="delete icon" />
                                             </span>
-                                            <span>
+                                            <span onClick={()=>{
+                                                setEditPopup(true)
+                                                handleEdit(el.id)
+                                            }}>
                                                 <img src={editSvg} alt="edit icon" />
                                             </span>
                                         </Icons>

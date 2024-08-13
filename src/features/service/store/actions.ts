@@ -9,7 +9,7 @@ export const postService = createAsyncThunk<ServiceRes, { service: ServiceReq },
       const response = await apiService.postService(service);
       return response.data;
     } catch (error: any) {
-      const message = error.response?.data?.detail || 'Unknown error';
+      const message = error.response?.data?.message || 'Unknown error';
       return rejectWithValue(message);
     }
   }
@@ -22,7 +22,46 @@ export const getAllServices = createAsyncThunk<ServiceRes[], void, { rejectValue
       const response = await apiService.getAllServices();
       return response.data;
     } catch (error: any) {
-      const message = error.response?.data?.detail || "Unknown error";
+      const message = error.response?.data?.message || "Unknown error";
+      return rejectWithValue(message);
+    }
+  }
+);
+
+export const getService = createAsyncThunk<ServiceRes, { id: number }, { rejectValue: string }>(
+  "services/getService",
+  async ({ id }, { rejectWithValue }) => {
+    try {
+      const response = await apiService.getService(id);
+      return response.data;
+    } catch (error: any) {
+      const message = error.response?.data?.message || "Unknown error";
+      return rejectWithValue(message);
+    }
+  }
+);
+
+export const deleteService = createAsyncThunk<void, { id: number }, { rejectValue: string }>(
+  'services/deleteService',
+  async ({ id }, { rejectWithValue }) => {
+    try {
+      await apiService.deleteService(id);
+    } catch (error: any) {
+      const message = error.response?.data?.message || "Unknown error";
+      return rejectWithValue(message);
+    }
+  }
+);
+
+
+export const editService = createAsyncThunk<ServiceRes, { id: number, service: ServiceReq }, { rejectValue: string }>(
+  'services/editService',
+  async ({ id, service }, { rejectWithValue }) => {
+    try {
+      const response = await apiService.editService(id, service);
+      return response.data;
+    } catch (error: any) {
+      const message = error.response?.data?.message || 'Unknown error';
       return rejectWithValue(message);
     }
   }

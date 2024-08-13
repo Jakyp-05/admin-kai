@@ -48,6 +48,10 @@ export const ServiceBody = styled("div")({
             width: "100%",
             textAlign: "left",
         },
+
+        "&:last-child": {
+            cursor: "default",
+        },
     },
 
     th: {
