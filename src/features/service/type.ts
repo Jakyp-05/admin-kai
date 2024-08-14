@@ -14,6 +14,3 @@ export interface ServiceRes {
 export interface ApiError {
     [key: string]: any;
 }
-
-
-

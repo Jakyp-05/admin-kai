@@ -3,10 +3,12 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import loginSlice from 'features/auth/login/store/slice';
 import serviceSlice from 'features/service/store/slice';
+import levelSlice from 'features/level/store/slice'
 
 const rootReducer = combineReducers({
   login: loginSlice,
   service: serviceSlice,
+  level: levelSlice,
 });
 
 export const store = configureStore({
