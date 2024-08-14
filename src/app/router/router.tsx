@@ -11,6 +11,7 @@ import ServiceRoute from "features/service/route";
 import SettingRoute from "features/setting/route";
 import PretectedRoute from "shared/ui/PretectedRoute";
 import studentRouter from "features/interns/route copy";
+import ProjectRoute from "features/project/route"
 
 export const MyRoutes = () => {
   const myRouter = useRoutes([
@@ -25,6 +26,7 @@ export const MyRoutes = () => {
            studentRouter,
            routeDetails,
            ServiceRoute,
+           ProjectRoute
           ],
            
     },

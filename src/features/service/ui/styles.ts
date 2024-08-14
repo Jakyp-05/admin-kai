@@ -1,6 +1,6 @@
-import {styled} from "@mui/material";
+import { styled } from "@mui/material";
 
-export const ServiceContainer = styled("div")(({theme}) => ({
+export const ServiceContainer = styled("div")(({ theme }) => ({
     width: "100%",
     height: "100%",
     backgroundColor: "#fff"
@@ -11,7 +11,8 @@ export const ServiceHead = styled("div")({
     alignItems: "center",
     justifyContent: "space-between",
     borderBottom: "1px solid #B6B7BC",
-    padding: "30px 50px 10px",
+    padding: "30px 30px 10px",
+    margin: "0px 20px",
 
     h2: {
         fontSize: "24px",
@@ -29,11 +30,11 @@ export const ServiceBody = styled("div")({
         marginTop: "3px",
     },
     thead: {
-        borderBottom: "1px solid black",
+        borderBottom: "1px solid #BBBBBB",
         padding: "20px",
     },
     tr: {
-        borderBottom: "1px solid black",
+        borderBottom: "1px solid #BBBBBB",
         cursor: "pointer",
     },
     td: {
@@ -44,12 +45,12 @@ export const ServiceBody = styled("div")({
         lineHeight: "25px",
         color: "#333350",
         letterSpacing: "0.127072px",
+        maxWidth: "300px",
         p: {
             width: "100%",
             textAlign: "left",
         },
-
-        "&:last-child": {
+        "&:last-of-type": {
             cursor: "default",
         },
     },
@@ -60,8 +61,8 @@ export const ServiceBody = styled("div")({
         fontWeight: "500",
         lineHeight: "24.38px",
         color: "#333350",
-        width: "300px",
-        paddingBottom: "20px"
+        paddingBottom: "20px",
+        maxWidth: "300px"
     },
 });
 

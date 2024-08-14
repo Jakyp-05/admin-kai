@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getAllServices } from "../store/actions";
-import { AppDispatch, RootState } from "app/store";
+import { AppDispatch } from "app/store";
 import { selectService } from "../store/selector";
 import { ServiceBody, ServiceContainer, ServiceHead, Icons } from './styles'
 import AddButton from "shared/ui/addButton";
@@ -88,7 +88,7 @@ const Service: React.FC = () => {
                                         handleInformation(el.id)
                                     }}>
                                         <p>
-                                            {el.description}
+                                            {el.description.length > 90? `${el.description.slice(1,90)}...`:el.description}
                                         </p>
                                     </td>
                                     <td onClick={() => {
