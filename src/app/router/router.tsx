@@ -1,11 +1,16 @@
 import { Layout } from "app/layout/layout";
-import activityRoute from "pages/activity/route";
-import directionRoute from "pages/direction/route";
-import reportRoute from "pages/report/route";
-import studentRouter from "pages/students/route";
 import { useRoutes } from "react-router-dom";
 import { Fallback } from "shared/ui/fallback/Fallback";
 import routeDetails from "../../shared/ui/Inters/ui/DetailsInter/routeDetails";
+import Login from "features/auth/login/ui/Login";
+
+import directionRoute from "features/direaction/route";
+import LevelRoute from "features/level/route";
+import ServiceRoute from "features/service/route";
+import SettingRoute from "features/setting/route";
+import PretectedRoute from "shared/ui/PretectedRoute";
+import studentRouter from "features/interns/route copy";
+import ProjectRoute from "features/project/route"
 
 export const MyRoutes = () => {
   const myRouter = useRoutes([
@@ -13,8 +18,20 @@ export const MyRoutes = () => {
       path: "/",
       element: <Layout />,
       errorElement: <Fallback />,
-      children: [activityRoute, directionRoute, reportRoute, studentRouter,routeDetails],
+      children: [
+        directionRoute,
+        studentRouter,
+        routeDetails,
+        ServiceRoute,
+        ProjectRoute,
+        LevelRoute
+      ],
+
     },
+    {
+      path: "/login",
+      element: <Login />,
+    }
   ]);
   return myRouter;
 };
