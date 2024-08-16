@@ -32,13 +32,13 @@
     opacity: 1;
   `;
 
-  const SelectDiv = styled.div`
+ export const SelectDiv = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
   `;
 
-  const LevelSelectContainer  = styled.div`
+ export const LevelSelectContainer  = styled.div`
   
     display: flex;
     align-items: start;

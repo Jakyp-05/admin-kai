@@ -1,7 +1,7 @@
+import { styled } from '@mui/material';
 import React from 'react';
-import styled from 'styled-components';
 
-const TextField = styled.input`
+const TextField = styled('input')`
   width: 287px;
   padding: 10px;
   margin: 5px 0 0;
@@ -12,11 +12,11 @@ const TextField = styled.input`
   font-size: 16px;
 `;
 
-const LabelText = styled.div``;
+const LabelText = styled('div')``;
 
-export const Label = styled.label`;
+export const Label = styled('label')`
   display: block;
-  margin: 30px 0 0;
+  margin: 10px 0 0;
   color: rgba(51, 51, 80, 1);
   font-size: 15px;
   font-weight: 500;

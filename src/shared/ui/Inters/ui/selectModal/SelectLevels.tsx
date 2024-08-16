@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Option } from '../../ui/InputAndSelect/modalInters/TypesModal';
+import { SelectFieldProps } from "./type";
 
 
 export const Label = styled.label`
   display: block;
-  margin: 20px 0 0;
+  margin: 10px 0 0;
    color:rgba(51, 51, 80, 1);
   font-size: 15px;
   font-weight: 500;
@@ -30,20 +31,13 @@ const LabelSelect = styled.div`
 
 `;
 
-interface SelectFieldProps {
-  label: string;
-  id?: string; 
-  name: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  options: Option[];
-}
 
-export const SelectFieldLevel: React.FC<SelectFieldProps> = ({ label, id, name, value, onChange, options }) => (
+
+export const SelectFieldLevel: React.FC<SelectFieldProps> = ({label, options, error, ...props }) => (
   <LabelSelect>
     {/* <Label htmlFor={id}>{label}</Label> */}
    
-   <Select id={id} name={name} value={value} onChange={onChange}>
+   <Select {...props}>
       <option value="">{`Выберите ${label.toLowerCase()}`}</option>
       {options.map((option) => (
         <option key={option.value} value={option.value}>
@@ -52,6 +46,6 @@ export const SelectFieldLevel: React.FC<SelectFieldProps> = ({ label, id, name, 
       ))}
    
    </Select>
-     
+   {error}
   </LabelSelect>
 );

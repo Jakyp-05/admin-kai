@@ -1,7 +1,7 @@
 import Level from "./ui/Level";
 
 const LevelRoute = {
-  path: "level",
+  path: "/level",
   element: <Level />,
 };
 
