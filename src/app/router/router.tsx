@@ -10,7 +10,8 @@ import ServiceRoute from "features/service/route";
 import SettingRoute from "features/setting/route";
 import PretectedRoute from "shared/ui/PretectedRoute";
 import studentRouter from "features/interns/route copy";
-import ProjectRoute from "features/project/route"
+import ProjectRoute from "features/project/route";
+import ProjectDetails from "widgets/project/DetailsPage/route/route";
 
 export const MyRoutes = () => {
   const myRouter = useRoutes([
@@ -19,14 +20,17 @@ export const MyRoutes = () => {
       element: <Layout />,
       errorElement: <Fallback />,
       children: [
-        directionRoute,
-        studentRouter,
-        routeDetails,
-        ServiceRoute,
-        ProjectRoute,
-        LevelRoute
-      ],
-
+        // activityRoute,
+         directionRoute,
+         ProjectRoute,
+         ProjectDetails,
+          // reportRoute,
+           studentRouter,
+           routeDetails,
+           ServiceRoute,
+           ProjectRoute,
+           LevelRoute
+          ],      
     },
     {
       path: "/login",

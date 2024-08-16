@@ -19,13 +19,15 @@ const data = [
 const DetailsInter = () => {
   const [ openModal, setOpenModal] = React.useState(false)
   const navigate = useNavigate();
+
   const handleOpen = () => {
+    document.body.style.overflow = 'hidden';                
     setOpenModal(true);
   };
 
   const handleClose = () => {
-    setOpenModal
-    (false);
+    document.body.style.overflow = '';
+    setOpenModal(false);
   };
 
   return (
@@ -36,7 +38,9 @@ const DetailsInter = () => {
           Информация о стажёра
           </BackButton>
         <ButtonAdd onClick={handleOpen}>Редактировать</ButtonAdd>
-        <EditInternModal open={openModal} onClose={handleClose} />
+        {
+          openModal && <EditInternModal open={openModal} onClose={handleClose} />  // Отображаем модальное окно при открытии панели редактирования
+        }
       </Header>
       
       <StudentInfo>

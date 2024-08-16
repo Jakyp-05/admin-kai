@@ -25,7 +25,6 @@ export interface AddInternModalProps {
  export interface Option {
     value: string;
     label: string;
-    
   }
 
     export interface InputFieldProps {

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import IntersList from "./ui/InterList";
+import InterList from "./ui/InterList";
 
 const studentRouter = {
   path: "",
@@ -7,7 +7,7 @@ const studentRouter = {
   children: [
     {
       path: "",
-      element: <IntersList />,
+      element: <InterList />,
     },
   ],
 };

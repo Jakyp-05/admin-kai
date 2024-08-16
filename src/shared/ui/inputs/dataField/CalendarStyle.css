@@ -1,0 +1,21 @@
+.css-10o2lyd-MuiStack-root{
+    overflow: hidden;
+    height: 78px;
+    justify-content: space-between;
+    input{
+        padding: 9.5px 65px 9.5px 5px  ;
+        /* padding: 10px 35px   ; */
+        max-width: 287px;
+        width: 100%;
+        max-height:35px;
+        height: 100%;
+    }
+}   
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 0 0 0 0;
+     /* max-width: 287px; */
+    /* width: 100%; */
+    max-height:35px;
+    height: 100%; 
+}
