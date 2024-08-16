@@ -4,7 +4,6 @@ import { Fallback } from "shared/ui/fallback/Fallback";
 import routeDetails from "../../shared/ui/Inters/ui/DetailsInter/routeDetails";
 import Login from "features/auth/login/ui/Login";
 
-// Lists
 import directionRoute from "features/direaction/route";
 import LevelRoute from "features/level/route";
 import ServiceRoute from "features/service/route";
@@ -27,9 +26,11 @@ export const MyRoutes = () => {
          ProjectDetails,
           // reportRoute,
            studentRouter,
-           routeDetails],
-           
-           
+           routeDetails,
+           ServiceRoute,
+           ProjectRoute,
+           LevelRoute
+          ],      
     },
     {
       path: "/login",
